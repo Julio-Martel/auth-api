@@ -19,6 +19,9 @@ const validarUsuario = (req, res, next) => {
         });
     }
 
+
+    //CORREGIR QUE AL INGRESAR UN USUARIO, EXISTA, Y COINCIDA
+
     const separarCodigo = codigo.split('-');
 
     if (parseInt(separarCodigo[5]) > 1) {

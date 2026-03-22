@@ -40,8 +40,6 @@ const mostrarTodosIdUsuario = (req,res) => {
 }
 
 const mostrarInformacionPersonalEmpleados = (req,res) => {
-    const codigo = req.body.codigo;
-    const usuarioObtenido = usuarios.find(u => u.codigo === codigo);
     const resultadosEmpleados = [];
 
     for (const user of usuarios) {

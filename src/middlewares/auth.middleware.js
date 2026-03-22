@@ -19,18 +19,21 @@ const validarUsuario = (req, res, next) => {
         });
     }
 
-
-    //CORREGIR QUE AL INGRESAR UN USUARIO, EXISTA, Y COINCIDA
+    if(!(usuarioValidado.codigo === codigo)){
+        return res.status(404).json({
+            mensaje: 'Codigo inexistente o incorrecto'
+        });
+    }
 
     const separarCodigo = codigo.split('-');
+    const codString = separarCodigo.toString()
 
-    if (parseInt(separarCodigo[5]) > 1) {
+    if (parseInt(codString[6]) > 1) {
         return res.status(403).json({
             mensaje: 'No autorizado, debe ser nivel 1'
         });
     }
 
-    // 🔥 SI LLEGA ACÁ → TODO OK
     next();
 };
 

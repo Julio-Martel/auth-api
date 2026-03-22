@@ -44,8 +44,6 @@ const mostrarInformacionPersonalEmpleados = (req,res) => {
     const usuarioObtenido = usuarios.find(u => u.codigo === codigo);
     const resultadosEmpleados = [];
 
-    console.log(codigo, usuarioObtenido)
-
     for (const user of usuarios) {
         if(user.id > 1){
             resultadosEmpleados.push(user);

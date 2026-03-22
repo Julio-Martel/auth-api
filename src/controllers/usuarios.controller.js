@@ -1,6 +1,26 @@
 const usuarios = require('../database/usuarios.database');
 
 const mostrarTodosIdUsuario = (req,res) => {
+    const id = parseInt(req.query.id);
+
+    if(id){
+        const usuarioObtenido = usuarios.find(u => u.id === id);
+
+        if(usuarioObtenido){
+            return res.status(200).json({
+                mensaje: 'Usuario filtrado',
+                usuario: {
+                    id: usuarioObtenido.id,
+                    nombre: usuarioObtenido.usuario
+                }
+            })
+        } else {
+            return res.status(403).json({
+                mensaje: 'Id inexistente'
+            })
+        }
+    }
+
     const datosPrincipales = [];
 
     for (const us of usuarios) {

@@ -39,6 +39,26 @@ const mostrarTodosIdUsuario = (req,res) => {
 
 }
 
+const mostrarInformacionPersonalEmpleados = (req,res) => {
+    const codigo = req.body.codigo;
+    const usuarioObtenido = usuarios.find(u => u.codigo === codigo);
+    const resultadosEmpleados = [];
+
+    console.log(codigo, usuarioObtenido)
+
+    for (const user of usuarios) {
+        if(user.id > 1){
+            resultadosEmpleados.push(user);
+        }
+    }
+    
+    return res.status(200).json({
+        mensaje: 'Listado de datos de todos los empleados',
+        resultadosEmpleados
+    })
+}
+
 module.exports = {
-    mostrarTodosIdUsuario
+    mostrarTodosIdUsuario,
+    mostrarInformacionPersonalEmpleados
 };

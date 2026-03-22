@@ -23,7 +23,7 @@ src/
 ## ⚙️ Instalación
 
 ```bash
-git clone https://github.com/tu-usuario/auth-api.git
+git clone https://github.com/Julio-Martel/auth-api.git
 cd auth-api
 npm install
 ```
@@ -79,5 +79,5 @@ Body:
 
 ## 👨‍💻 Autor
 
-Tu nombre
+Julio
 

@@ -74,11 +74,28 @@ const realizarRegistro = (req,res) => {
         mensaje: 'Usuario creado con exito',
         usuarios
     })
+}
+
+const modificarUsuario = (req,res) => {
+    const id = req.params.id;
+    const usuarioPosicion = usuarios.findIndex(u => u.id === id);
+
+    usuarios[usuarioPosicion] = {
+        id: id,
+        ...usuarios[usuarioPosicion],
+        ...req.body
+    }
+
+    return res.status(200).json({
+        mensaje: 'Usuario actualizado',
+        usuarios
+    })
 
 }
 
 module.exports = {
     mostrarTodosIdUsuario,
     mostrarInformacionPersonalEmpleados,
-    realizarRegistro
+    realizarRegistro,
+    modificarUsuario
 };

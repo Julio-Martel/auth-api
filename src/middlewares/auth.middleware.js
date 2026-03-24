@@ -58,7 +58,23 @@ const validarRegistro = (req, res, next) => {
 
 }
 
+const validarId = (req, res, next) => {
+    const id = parseInt(req.params.id);
+    const validaId = usuarios.find(u => u.id === id);
+
+    if(validaId === undefined){
+        return res.status(403).json({
+            mensaje: "ID no encontrado"
+        })
+    } else {
+        console.log('Envie datos con el thunder client')
+    }
+
+    next();
+}
+
 module.exports = {
     validarUsuario,
-    validarRegistro
+    validarRegistro,
+    validarId
 };

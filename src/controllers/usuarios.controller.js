@@ -88,6 +88,7 @@ const modificarUsuario = (req,res) => {
 
     return res.status(200).json({
         mensaje: 'Usuario actualizado',
+        usuario: usuarios[usuarioPosicion],
         usuarios
     })
 

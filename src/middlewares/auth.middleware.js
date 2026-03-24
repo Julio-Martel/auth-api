@@ -48,7 +48,7 @@ const validarRegistro = (req, res, next) => {
     
     const usuarioYpasswordRepetidos = usuarios.find(u => u.usuario === usuario || u.password === password )
 
-    if(usuarioYpasswordRepetidos !== null){
+    if(usuarioYpasswordRepetidos !== undefined){
         return res.status(403).json({
             mensaje: 'Usuario o contraseña ya existente'
         })
@@ -57,7 +57,6 @@ const validarRegistro = (req, res, next) => {
     next();
 
 }
-
 
 module.exports = {
     validarUsuario,

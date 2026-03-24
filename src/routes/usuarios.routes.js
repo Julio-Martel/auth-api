@@ -6,7 +6,7 @@ const usuariosController = require('../controllers/usuarios.controller');
 
 router.get('/', usuariosController.mostrarTodosIdUsuario);
 router.post('/', authMiddleware.validarUsuario, usuariosController.mostrarInformacionPersonalEmpleados);
-router.put('/', authMiddleware.validarRegistro)
+router.put('/', authMiddleware.validarRegistro, usuariosController.realizarRegistro);
 
 
 module.exports = router;

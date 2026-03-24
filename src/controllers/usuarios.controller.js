@@ -1,4 +1,5 @@
 const usuarios = require('../database/usuarios.database');
+const generarId = require('../utils/usuarios.utils');
 
 const mostrarTodosIdUsuario = (req,res) => {
     const id = parseInt(req.query.id);
@@ -54,7 +55,30 @@ const mostrarInformacionPersonalEmpleados = (req,res) => {
     })
 }
 
+const realizarRegistro = (req,res) => {
+
+    const nuevoUsuario = {
+        id: generarId(),
+        codigo: null,
+        usuario: req.body.usuario,
+        password: req.body.password,
+        role: req.body.role,
+        infoPersonal: req.body.infoPersonal
+    }
+
+    nuevoUsuario.codigo = `USR-00${nuevoUsuario.id}`
+
+    usuarios.push(nuevoUsuario);
+
+    return res.status(200).json({
+        mensaje: 'Usuario creado con exito',
+        usuarios
+    })
+
+}
+
 module.exports = {
     mostrarTodosIdUsuario,
-    mostrarInformacionPersonalEmpleados
+    mostrarInformacionPersonalEmpleados,
+    realizarRegistro
 };

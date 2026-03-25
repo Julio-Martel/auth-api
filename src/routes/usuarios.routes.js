@@ -7,7 +7,6 @@ const usuariosController = require('../controllers/usuarios.controller');
 router.get('/', usuariosController.mostrarTodosIdUsuario);
 router.post('/', authMiddleware.validarRegistro, usuariosController.realizarRegistro);
 router.put('/:id', authMiddleware.validarId, authMiddleware.validarBody, usuariosController.reemplarUsuario);
-/*router.patch('/:id', authMiddleware.validarId, usuariosController.modificarUsuario);*/
-
+router.patch('/:id', authMiddleware.validarId, authMiddleware.validarBody, usuariosController.modificarUsuario);
 
 module.exports = router;

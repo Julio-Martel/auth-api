@@ -95,6 +95,7 @@ const modificarUsuario = (req,res) => {
 }
 
 const reemplarUsuario = (req,res) => {
+
     const id = req.params.id;
     const usuarioEncontrado = usuarios.findIndex(u => u.id === id);
 

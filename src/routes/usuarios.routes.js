@@ -6,7 +6,6 @@ const usuariosController = require('../controllers/usuarios.controller');
 
 router.get('/', usuariosController.mostrarTodosIdUsuario);
 router.post('/', authMiddleware.validarRegistro, usuariosController.realizarRegistro);
-//CORREGIR ESTO, SE MEZCLARON LOS METODOS JUNTO CON SUS FUNCIONES ADECUADAS
 router.put('/:id', authMiddleware.validarId, authMiddleware.validarBody, usuariosController.reemplarUsuario);
 /*router.patch('/:id', authMiddleware.validarId, usuariosController.modificarUsuario);*/
 

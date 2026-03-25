@@ -3,6 +3,18 @@ const generarId = require('../utils/usuarios.utils');
 
 const mostrarTodosIdUsuario = (req,res) => {
     const id = parseInt(req.query.id);
+    const edadInicial = parseInt(req.query.edadInicial)
+    const  edadFinal = parseInt(req.query.edadFinal);
+
+    if(edadFinal && edadInicial){
+        const edadesFiltradas = usuarios.filter(u => u.infoPersonal.edad >= edadInicial && u.infoPersonal.edad < edadFinal);
+
+        return res.status(200).json({
+            mensaje: "Empleados menores de 30 años",
+            edadesFiltradas
+        })
+
+    }
 
     if(id){
         const usuarioObtenido = usuarios.find(u => u.id === id);
@@ -79,7 +91,7 @@ const realizarRegistro = (req,res) => {
 const modificarUsuario = (req,res) => {
     const id = parseInt(req.params.id);
     const usuarioPosicion = usuarios.findIndex(u => u.id === id);
-    
+
     usuarios[usuarioPosicion] = {
         id: id,
         ...usuarios[usuarioPosicion],

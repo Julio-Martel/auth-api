@@ -94,9 +94,36 @@ const modificarUsuario = (req,res) => {
 
 }
 
+const reemplarUsuario = (req,res) => {
+    const id = req.params.id;
+    const usuarioEncontrado = usuarios.findIndex(u => u.id === id);
+
+    const usuarioActualizado = {
+        id: id,
+        codigo: null,
+        usuario: req.body.usuario,
+        password: req.body.password,
+        role: req.body.role,
+        infoPersonal: req.body.infoPersonal     
+    };
+
+    usuarioActualizado.codigo = `USR-00${id}`;
+
+    usuarios[usuarioEncontrado] = {
+        ...usuarioActualizado
+    }
+
+    res.status(200).json({
+        mensaje: 'USUARIO ACTUALIZADO',
+        usuarios
+    })
+
+}
+
 module.exports = {
     mostrarTodosIdUsuario,
     mostrarInformacionPersonalEmpleados,
     realizarRegistro,
-    modificarUsuario
+    modificarUsuario,
+    reemplarUsuario
 };

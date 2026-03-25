@@ -73,8 +73,21 @@ const validarId = (req, res, next) => {
     next();
 }
 
+
+const validarBody = (req, res, next) => {
+    if (!req.body || Object.keys(req.body).length === 0) {
+        return res.status(400).json({
+            mensaje: 'Debe enviar datos en el body'
+        });
+    }
+
+    next();
+};
+
+
 module.exports = {
     validarUsuario,
     validarRegistro,
-    validarId
+    validarId,
+    validarBody
 };

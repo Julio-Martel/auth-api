@@ -77,9 +77,9 @@ const realizarRegistro = (req,res) => {
 }
 
 const modificarUsuario = (req,res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const usuarioPosicion = usuarios.findIndex(u => u.id === id);
-
+    
     usuarios[usuarioPosicion] = {
         id: id,
         ...usuarios[usuarioPosicion],
